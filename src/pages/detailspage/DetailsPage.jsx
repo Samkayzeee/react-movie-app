@@ -13,11 +13,11 @@ const DetailsPage = () => {
 
     useEffect(() => {
         fetchMovies(`https://api.themoviedb.org/3/movie/${parseFloat(id)}?${APIS.KEY}`);
-        fetchTrailer(`https://api.themoviedb.org/3/movie/${parseFloat(id)}/videos?${APIS.KEY}`);
+       fetchTrailer(`https://api.themoviedb.org/3/movie/${parseFloat(id)}/videos?${APIS.KEY}`);
     },[])
 
 
-    const fetchMovies =async (url) => {
+    const fetchMovies = async (url) => {
         const fetchs = await axios.get(url)
         const oneMovie = fetchs.data;
         setMovie(oneMovie);
@@ -25,8 +25,9 @@ const DetailsPage = () => {
 
 
     const fetchTrailer = async(url) => {
-        const fetchs = await axios.get(url)
-        const oneMovie = fetchs.data.results[1];
+        const fetchs = await axios.get(url);
+        const oneMovie = fetchs.data.results[2];
+
         if (oneMovie === undefined){
             setVideo(false);
         }
@@ -35,6 +36,7 @@ const DetailsPage = () => {
             setTrailer(oneMovie);
         }
     }
+
 
     return ( 
         <>
