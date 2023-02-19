@@ -6,6 +6,7 @@ import Movie from '../../components/movies/Movies';
 function MainPage() {
     const [search, setSearch] = useState("");
     const [movies, setMovies] = useState([]);
+    const [error, setError] = useState(null);
 
 
     const MAINURL = `${APIS.URL}discover/movie?sort_by=popularity.desc&${APIS.KEY}`;
@@ -31,26 +32,36 @@ function MainPage() {
     const getMovies = async(url) => {
       try {
         const rawMovies = await axios.get(url);
+        if (rawMovies.status !== 200 ){
+            throw Error("Theirs a problem fetching your videos");
+        }
         const movies = await rawMovies.data.results;
         setMovies(movies);
       } catch (error) {
-          console.log('Theirs is an error')
-          console.log(error);
+          setError(error.message);
       }
     }
 
 
+    const form = (e) => {
+        e.preventDefault();
+    }
+
       return (
     <div className="MainPage">
           <nav>
-            <form action="">
+            <div className="logo">
+              SAMKAYZEE.
+            </div>
+            
+            <form action="" onSubmit={form}>
               <input onInput={(e) => setSearch(e.target.value)} type="search" name="" id="" />
             </form>
           </nav>
+
+          
             <div>
-
-            { movies?  <Movie movies={movies}/> : <h1>No Videos Available</h1>}
-
+              { error?  <h1> { error } No Videos Available</h1> : <Movie movies={movies}/>}
             </div>
     </div>
   )

@@ -1,5 +1,5 @@
 import './DetailsPage.css';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import APIS from '../../js/Urls';
@@ -13,34 +13,48 @@ const DetailsPage = () => {
 
     useEffect(() => {
         fetchMovies(`https://api.themoviedb.org/3/movie/${parseFloat(id)}?${APIS.KEY}`);
-       fetchTrailer(`https://api.themoviedb.org/3/movie/${parseFloat(id)}/videos?${APIS.KEY}`);
+        fetchTrailer(`https://api.themoviedb.org/3/movie/${parseFloat(id)}/videos?${APIS.KEY}`);
     },[])
 
 
     const fetchMovies = async (url) => {
         const fetchs = await axios.get(url)
         const oneMovie = fetchs.data;
+        console.log(oneMovie);
         setMovie(oneMovie);
     }
 
 
     const fetchTrailer = async(url) => {
         const fetchs = await axios.get(url);
-        const oneMovie = fetchs.data.results[2];
+         console.log(fetchs.data.results.length);
 
-        if (oneMovie === undefined){
-            setVideo(false);
+        if (fetchs.data.results.length >= 4){
+            const oneMovie = fetchs.data.results[4];
+            if (oneMovie === undefined){
+                setVideo(false)
+            }
+            else{
+                setVideo(true);
+                setTrailer(oneMovie);
+            }
         }
-        else{
-            setVideo(true);
-            setTrailer(oneMovie);
+        else {
+            const oneMovie = fetchs.data.results[0]
+            if (oneMovie === undefined){
+                setVideo(false);
+            }
+            else{
+                setVideo(true);
+                setTrailer(oneMovie);
+            }
         }
     }
 
 
     return ( 
         <>
-            <div>
+            <div className='movie_details'>
                {
                 <h1> {movie.title} </h1>
                }
@@ -51,11 +65,11 @@ const DetailsPage = () => {
 
                 <YouTube
                         videoId={trailer.key}
-                        className={"youtube amru"}
+                        className={"trailer"}
                         containerClassName={"youtube-container amru"}
                         opts={
                             {
-                                width: '100%',
+                                width: '400px',
                                 height: '400px',
                                 playerVars: {
                                     // autoplay: 1,
@@ -72,6 +86,8 @@ const DetailsPage = () => {
                     />: <h1>Trailer Not Available</h1>
 
                }
+
+               <Link to={'/'}>Go Back To Videos</Link>
         </>
      );
 }

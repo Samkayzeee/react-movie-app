@@ -14,9 +14,11 @@ const router = createBrowserRouter([
 
 ])
 
+  const loading = <h1>Loading...</h1>
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Suspense>
+    <Suspense  fallback={loading} >
         <RouterProvider router={router} />
     </Suspense>
   </React.StrictMode>,

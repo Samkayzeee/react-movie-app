@@ -8,7 +8,7 @@ const Movie = ({movies}) => {
     return ( 
         <>
             <div className="movies">
-            <div>
+            <div className="main">
             {
               movies.map((movie) => {
                 return(
