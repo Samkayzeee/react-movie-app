@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios';
 import APIS from './../../js/Urls';
 import Movie from '../../components/movies/Movies';
+import { Link } from 'react-router-dom';
+import './MainPage.css';
 
 function MainPage() {
     const [search, setSearch] = useState("");
@@ -51,17 +53,17 @@ function MainPage() {
     <div className="MainPage">
           <nav>
             <div className="logo">
-              SAMKAYZEE.
+              <Link to={'/'}>SAMKAYZEE.</Link>
             </div>
-            
+
             <form action="" onSubmit={form}>
-              <input onInput={(e) => setSearch(e.target.value)} type="search" name="" id="" />
+              <input onInput={(e) => setSearch(e.target.value)} type="search" name="" id="" placeholder='Search For Movie'/>
             </form>
           </nav>
 
-          
-            <div>
-              { error?  <h1> { error } No Videos Available</h1> : <Movie movies={movies}/>}
+            <h2 className='latest'>Latest Movies</h2>
+            <div className='show_movies'>
+              { error ?  <h1 className='error'> { error } No Videos Available</h1> : <Movie movies={movies}/>}
             </div>
     </div>
   )

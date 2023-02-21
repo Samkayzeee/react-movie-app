@@ -1,0 +1,33 @@
+.Movies {
+    padding: 0 4%;
+    margin-top: 2%;
+}
+.Movies .main{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+    padding: 0 0 3% 0;
+}
+.Movies .main .main-movies{
+    cursor: pointer;
+    transition: all .4s;
+    border: none;
+    border-radius: 8px;
+    padding: 4%;
+    width: 400px;
+    background: linear-gradient(rgb(130, 129, 129),rgb(47, 47, 47));
+}
+.Movies .main .main-movies:hover{
+    transform: translateY(-8px);
+}
+.Movies .main .main-movies .movie_img{
+    width: 100%;
+}
+.Movies .main .main-movies .movie_img img{
+    width: 100%;
+    height: 100%;
+}
+.Movies .main .main-movies .movie_title{
+    color: red;
+    font-weight: 900;
+}
