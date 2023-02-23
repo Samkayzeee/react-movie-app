@@ -35,7 +35,7 @@ function MainPage() {
       try {
         const rawMovies = await axios.get(url);
         if (rawMovies.status !== 200 ){
-            throw Error("Theirs a problem fetching your videos");
+            throw Error("Theirs a problem fetching videos");
         }
         const movies = await rawMovies.data.results;
         setMovies(movies);
@@ -57,13 +57,13 @@ function MainPage() {
             </div>
 
             <form action="" onSubmit={form}>
-              <input onInput={(e) => setSearch(e.target.value)} type="search" name="" id="" placeholder='Search For Movie'/>
+              <input onInput={(e) => setSearch(e.target.value)} type="search" name="search" id="search" placeholder='Search For Movie' />
             </form>
           </nav>
 
             <h2 className='latest'>Latest Movies</h2>
             <div className='show_movies'>
-              { error ?  <h1 className='error'> { error } No Videos Available</h1> : <Movie movies={movies}/>}
+              { error ?  <h1 className='error'> { error } No Videos Available</h1> : <Movie movies={movies} />}
             </div>
     </div>
   )
