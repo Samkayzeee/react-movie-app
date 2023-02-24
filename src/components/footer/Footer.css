@@ -1,0 +1,36 @@
+.footer{
+    display: flex;
+    justify-content: space-between;
+    border-top: solid red;
+    padding: 2%;
+}
+.footer .first h5{
+    color: red;
+}
+.footer .icons ul{
+    list-style-type: none;
+}
+.footer .icons ul li{
+    display: inline-block;
+    margin: 0 10px;
+}
+.footer .icons ul li a{
+    color: red;
+    transition: all .4s;
+    font-size: 20px;
+}
+.footer .icons ul li a:hover{
+    color: white;
+}
+@media screen and (max-width:470px) {
+    .footer{
+        flex-direction: column;
+    }
+    .footer .first h5{
+        text-align: center;
+    }
+    .footer .icons ul{
+        text-align: center;
+        margin-top: 2%;
+    }
+}

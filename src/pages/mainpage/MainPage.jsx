@@ -4,6 +4,7 @@ import APIS from './../../js/Urls';
 import Movie from '../../components/movies/Movies';
 import { Link } from 'react-router-dom';
 import './MainPage.css';
+import Footer from '../../components/footer/Footer';
 
 function MainPage() {
     const [search, setSearch] = useState("");
@@ -65,6 +66,8 @@ function MainPage() {
             <div className='show_movies'>
               { error ?  <h1 className='error'> { error } No Videos Available</h1> : <Movie movies={movies} />}
             </div>
+
+            <Footer />
     </div>
   )
 }
