@@ -18,10 +18,7 @@ const Movie = ({movies}) => {
                         <img src={`${APIS.IMGURL}${movie.poster_path}`} alt={movie.title} />
                       </div>
 
-                      <h1 className="movie_title"> {movie.title} </h1>
-                      {/* <p>
-                        {movie.overview}
-                      </p> */}
+                      <h1 className="movie_title">{movie.title}</h1>
                   </div>
                 )
               })

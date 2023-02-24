@@ -16,6 +16,7 @@
     padding: 4%;
     width: 400px;
     background: linear-gradient(rgb(130, 129, 129),rgb(47, 47, 47));
+    height: 650px;
 }
 .Movies .main .main-movies:hover{
     transform: translateY(-8px);
@@ -30,4 +31,26 @@
 .Movies .main .main-movies .movie_title{
     color: white;
     font-weight: 900;
+    font-size: 25px;
+    margin: 2% 0;
+}
+
+@media screen and (max-width:1100px) {
+    .Movies .main{
+        grid-template-columns: auto auto;
+    }
+}
+
+@media screen and (max-width:880px) {
+    .Movies .main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media screen and (max-width:450px) {
+    .Movies .main .main-movies{
+        width: 100%;
+        height: fit-content;
+    }
 }

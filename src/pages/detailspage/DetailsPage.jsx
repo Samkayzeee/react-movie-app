@@ -10,6 +10,7 @@ const DetailsPage = () => {
     const [movie, setMovie] = useState({});
     const [trailer, setTrailer] = useState({});
     const [video, setVideo] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetchMovies(`https://api.themoviedb.org/3/movie/${parseFloat(id)}?${APIS.KEY}`);
@@ -55,22 +56,21 @@ const DetailsPage = () => {
     return ( 
         <>
             <div className='movie_details'>
-               {
-                <h1> {movie.title} </h1>
-               }
-            </div>
-
+                <div className="details">
+                        <h1 className='title'> {movie.title} </h1>
+                        <h4 className='overview'> { movie.overview } </h4>
+                </div>
                {
                 video?
-
-                <YouTube
+                <div className="trailer">
+                    <YouTube
                         videoId={trailer.key}
                         className={"trailer"}
                         containerClassName={"youtube-container amru"}
                         opts={
                             {
-                                width: '400px',
-                                height: '400px',
+                                width: '100%',
+                                height: '100%',
                                 playerVars: {
                                     // autoplay: 1,
                                     controls: 0,
@@ -83,11 +83,13 @@ const DetailsPage = () => {
                                 },
                             }
                         }
-                    />: <h1>Trailer Not Available</h1>
+                    />
+                </div> : <h1 className='not_available'>Trailer Not Available</h1>
 
                }
 
                <Link to={'/'}>Go Back To Videos</Link>
+            </div>
         </>
      );
 }

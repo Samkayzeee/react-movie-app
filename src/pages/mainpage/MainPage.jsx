@@ -61,7 +61,7 @@ function MainPage() {
             </form>
           </nav>
 
-            <h2 className='latest'>Latest Movies</h2>
+           { !error &&  <h2 className='latest'>Latest Movies</h2> }
             <div className='show_movies'>
               { error ?  <h1 className='error'> { error } No Videos Available</h1> : <Movie movies={movies} />}
             </div>

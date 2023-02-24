@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Kanit&display=swap');
 
+
+body{
+    background: black;
+}
 *{
     font-family: 'Inter', sans-serif;
     padding: 0;
