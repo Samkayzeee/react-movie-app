@@ -21,14 +21,12 @@ const DetailsPage = () => {
     const fetchMovies = async (url) => {
         const fetchs = await axios.get(url)
         const oneMovie = fetchs.data;
-        console.log(oneMovie);
         setMovie(oneMovie);
     }
 
 
     const fetchTrailer = async(url) => {
         const fetchs = await axios.get(url);
-         console.log(fetchs.data.results.length);
 
         if (fetchs.data.results.length >= 4){
             const oneMovie = fetchs.data.results[4];
